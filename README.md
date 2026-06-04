@@ -14,7 +14,7 @@ Agent systems increasingly rely on textual skills — reusable procedures that e
 **LatentSkill** addresses this by converting textual skills into plug-and-play LoRA adapters through a pretrained hypernetwork. Instead of delivering skills through the context window, LatentSkill stores skill knowledge in **weight space**, removing per-step skill tokens while preserving modular loading, scaling, and composition.
 
 <p align="center">
-  <img src="figures/framework.png" width="95%" alt="LatentSkill Framework">
+  <img src="framework.png" width="95%" alt="LatentSkill Framework">
 </p>
 
 <p align="center"><em>Figure: Overview of LatentSkill. Left: textual skills are transformed into in-weight latent skills through hypernetwork-based LoRA generation. Middle: the skill compiler is trained by skill document pretraining and trajectory-supervised fine-tuning. Right: the resulting latent skills support structured semantic geometry, controllable injection strength, and composable parameter-space arithmetic at inference time.</em></p>
@@ -32,7 +32,7 @@ Agent systems increasingly rely on textual skills — reusable procedures that e
 ### ALFWorld (Success Rate %)
 
 <p align="center">
-  <img src="figures/table1.png" width="90%" alt="ALFWorld Results">
+  <img src="table1.png" width="90%" alt="ALFWorld Results">
 </p>
 
 LatentSkill reaches **74.3%** and **69.4%** average success on the seen and unseen splits, improving over In-Context Skill by **+21.4** and **+13.4** points with **64.1% fewer prefill tokens**.
@@ -40,7 +40,7 @@ LatentSkill reaches **74.3%** and **69.4%** average success on the seen and unse
 ### Search-QA (Exact Match %)
 
 <p align="center">
-  <img src="figures/table2.png" width="90%" alt="Search-QA Results">
+  <img src="table2.png" width="90%" alt="Search-QA Results">
 </p>
 
 LatentSkill achieves the highest average EM of **35.6**, improving over In-Context Skill by **+3.0** points with **72.2% lower skill-token overhead**.
