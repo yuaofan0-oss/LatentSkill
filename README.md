@@ -8,7 +8,6 @@
 
 This is the official repository for the paper *"LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents"*.
 
-[[Paper]](https://arxiv.org/abs/2604.02029)
 
 ## Overview
 
@@ -72,10 +71,13 @@ At inference time, the compiler generates a skill-specific LoRA adapter in a sin
 If you find this work useful, please cite our paper:
 
 ```bibtex
-@article{yu2025latentskill,
-  title={LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents},
-  author={Yu, Aofan and Zhou, Chenyu and Xu, Tianyi and Guo, Zihan and Shan, Rong and Fu, Zhihui and Wang, Jun and Liu, Weiwen and Yu, Yong and Zhang, Weinan and Lin, Jianghao},
-  journal={arXiv preprint arXiv:2604.02029},
-  year={2025}
+@article{yu2026latentskillincontexttextualskills,
+      title={LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents}, 
+      author={Aofan Yu and Chenyu Zhou and Tianyi Xu and Zihan Guo and Rong Shan and Zhihui Fu and Jun Wang and Weiwen Liu and Yong Yu and Weinan Zhang and Jianghao Lin},
+      year={2026},
+      eprint={2606.06087},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.06087}, 
 }
 ```
