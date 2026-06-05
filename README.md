@@ -1,11 +1,14 @@
 # LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper"></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License"></a>
+  <a href="https://arxiv.org/abs/2604.02029"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper"></a>
+  <a href="https://github.com/yuaofan0-oss/LatentSkill"><img src="https://img.shields.io/badge/Code-GitHub-blue" alt="Code"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
 </p>
 
 This is the official repository for the paper *"LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents"*.
+
+[[Paper]](https://arxiv.org/abs/2604.02029)
 
 ## Overview
 
@@ -55,17 +58,24 @@ LatentSkill operates in two training stages:
 
 At inference time, the compiler generates a skill-specific LoRA adapter in a single forward pass. The adapter is mounted on the frozen backbone, and the original skill text is never included in the prompt.
 
-## Code
+## Release
 
-🚧 Coming soon.
+| Resource | Status |
+|---|---|
+| 📄 Paper | [Available](https://arxiv.org/abs/2604.02029) |
+| 💻 Code | 🚧 Coming soon |
+| 📦 Data | 🚧 Coming soon |
+| 🏋️ Checkpoints | 🚧 Coming soon |
 
 ## Citation
+
+If you find this work useful, please cite our paper:
 
 ```bibtex
 @article{yu2025latentskill,
   title={LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents},
   author={Yu, Aofan and Zhou, Chenyu and Xu, Tianyi and Guo, Zihan and Shan, Rong and Fu, Zhihui and Wang, Jun and Liu, Weiwen and Yu, Yong and Zhang, Weinan and Lin, Jianghao},
-  journal={arXiv preprint arXiv:xxxx.xxxxx},
+  journal={arXiv preprint arXiv:2604.02029},
   year={2025}
 }
 ```
