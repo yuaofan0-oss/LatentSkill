@@ -1,0 +1,11 @@
+### Heat Skills
+- **Secure Exact Target First**: Always identify and pick up the exact object type named in the goal before interacting with the microwave or destination, ignoring look-alikes (e.g., don’t substitute a mug for a cup).
+  _Apply when: After spotting any candidate object or during initial search phase; before opening/using appliances._
+- **Systematic One-Pass Search**: Search each plausible surface or closed container once by opening it and inspecting contents; mark searched spots mentally to avoid redundant revisits.
+  _Apply when: While locating the target object and you have not yet found it._
+- **Open Then Heat**: Upon reaching the microwave with the target in hand, always open the door, place the object inside, and execute the heat action before leaving.
+  _Apply when: Immediately after navigating to the microwave with the target object held._
+- **No Appliance Before Object**: Do not move to or interact with the microwave or final placement location until the target object is picked up, preventing wasted navigation steps.
+  _Apply when: Whenever you are tempted to head to microwave/destination without holding the required object._
+- **Direct Post-Heat Placement**: After heating, navigate straight to the specified destination and place the object once, avoiding extra exploration or detours.
+  _Apply when: Right after the heating action completes and the object is in hand._

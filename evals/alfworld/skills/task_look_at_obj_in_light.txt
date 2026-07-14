@@ -1,0 +1,11 @@
+### Look At Obj In Light Skills
+- **Seek Lamp Surfaces First**: Head straight to furniture that commonly hosts a desklamp (desk, sidetable, nightstand) because the target must end up under that light.
+  _Apply when: Right after parsing a look-at-object-under-desklamp goal._
+- **Switch Lamp On**: Issue 'use desklamp' as soon as you reach it so the light condition is satisfied before or immediately after handling the target object.
+  _Apply when: Upon arriving at a desklamp that is currently off._
+- **Acquire Or Fetch Target**: If the target is on the lit surface, 'take' it; if found elsewhere, pick it up and carry it back to the lit lamp area.
+  _Apply when: Whenever the target object becomes visible, whether under the lamp or not._
+- **Systematic Surface Search**: On each candidate lamp surface, look, open nearby containers/drawers once, then move on—ensuring all plausible lamp locations are covered.
+  _Apply when: After the lamp at the current surface is on and the target hasn’t been found._
+- **Prevent Action Loops**: Avoid toggling the same lamp or re-examining the same empty spot; if no progress after one full check, relocate to a new plausible lamp location.
+  _Apply when: When repeated identical actions yield no new observations or objects._

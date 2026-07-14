@@ -1,0 +1,31 @@
+General Principles:
+Systematic Exploration: Search every plausible surface or container exactly once before revisiting; prioritize unopened or unseen locations to cover the whole room methodically.
+Immediate Acquisition: As soon as a required object becomes visible and reachable, take it before moving elsewhere to avoid losing track or re-searching.
+Destination First Policy: After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+Track Counts & Progress: Maintain an internal counter of how many goal objects are still needed; stop searching or terminate episode only when the counter reaches zero.
+Use State-Changing Tools Early: For tasks requiring heated/cooled/clean objects, acquire the object, then immediately use the nearest suitable appliance to change its state before any placement.
+Establish Spatial Relations: When a goal specifies a relation (under/inside/on), first locate the reference object, adjust its state if needed (e.g., turn lamp on), then search the specified spatial region for the target object or place it there.
+
+Cool Skills:
+Systematic Object Hunt: Sweep every unvisited surface and open each closed container until the exact required object is found; never loop over already-checked empty spots.
+Apply when: Immediately after receiving a cool-task and before any object is held.
+Confirm Object Match: After picking up an item, verify it matches the requested type; if not, drop it and resume the search.
+Apply when: Whenever you acquire an object but the goal object is still unmet.
+Prep Cooling Appliance: Locate the fridge first and open it so it’s ready for use before or immediately after grabbing the target object.
+Apply when: As soon as the fridge comes into view or right after acquiring the target object.
+Enforce Cooling Before Placement: Do not place the target object in its final location until you have successfully executed a cooling action with the fridge.
+Apply when: When holding the correct object and before any placement action is attempted.
+Direct Post-Cooling Delivery: Once the object is cooled, navigate straight to the destination and place it without extraneous detours or re-searching.
+Apply when: Right after the cooling action succeeds.
+
+Mistakes to Avoid:
+Don't: Agent repeatedly revisits the same already-searched locations or containers instead of exploring new ones.
+Instead: Maintain an exploration map that records which rooms/containers have been fully inspected and prioritize unvisited or unopened candidates until all reasonable options are exhausted.
+Don't: Agent decides a closed container is empty without opening it, causing missed discoveries of target objects.
+Instead: Always open and inspect every plausible closed container at least once before ruling it out, using a checklist of unopened containers in the current room.
+Don't: Agent ignores or walks away from target objects that are already visible and reachable.
+Instead: Embed a perception buffer that immediately queues pick-up actions for visible goal objects and interrupts any ongoing exploratory loop.
+Don't: Agent keeps searching after acquiring enough items because it loses track of how many targets have been collected.
+Instead: Maintain explicit numerical goals and increment/decrement them on every successful pickup or placement, triggering transition to the next sub-goal when counts are satisfied.
+Don't: Agent fails to deliver a held target object to the known destination, instead continuing to wander.
+Instead: Adopt a hierarchical policy that, upon holding a goal object, immediately switches to a high-priority ‘deliver-to-goal’ subtask before resuming further search.

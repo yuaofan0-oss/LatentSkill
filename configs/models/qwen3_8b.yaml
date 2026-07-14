@@ -1,0 +1,136 @@
+name: default
+mode: pretrain
+
+resume_global_step: -1
+
+run:
+  seed: 42
+  use_amp: false
+  gradient_accumulation_steps: 4
+  device: cuda
+  use_gradient_checkpoint: false
+
+paths:
+  model_path: ${oc.env:MODEL_PATH,./models/Qwen3-8B}
+  output_dir: ${oc.env:OUTPUT_DIR,outputs/model}
+  checkpoint_root: ${oc.env:CHECKPOINT_ROOT,checkpoints}
+  pretrain_checkpoint_dir: ${oc.env:PRETRAIN_CHECKPOINT_DIR,}
+  pretrain_checkpoint_name: ${oc.env:PRETRAIN_CHECKPOINT_NAME,}
+
+data:
+  context_max_length: 8183
+  conversation_max_length: 8192
+  train_batch_size: 4
+  eval_batch_size: 2
+  num_workers: 4
+  source: skill-pretrain
+  root_dir: ${oc.env:DATA_ROOT,data}
+  paths:
+    skill_pretrain_dir: ${data.root_dir}/skill_pretrain
+    skill_pretrain_train: ${data.paths.skill_pretrain_dir}/train.jsonl
+    skill_pretrain_val: ${data.paths.skill_pretrain_dir}/val.jsonl
+    skill_ift_train: ${data.root_dir}/skill_ift/train.json
+    skill_ift_val_size: 200
+
+optim:
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  num_epochs: 10
+  warmup_steps: 500
+  grad_clip_norm: 1.0
+
+logging:
+  logging_steps: 1
+
+eval:
+  eval_steps: 1250
+
+save:
+  save_steps: 1250
+
+model:
+  lora_r: 8
+  metalora_r: 128
+  ift_additional_metalora_r: -1
+  num_mem_token: ${num_mem_token}
+  backbone_class_path: "latentskill.models.qwen_lora.LatentSkillQwen3ForCausalLM"
+  config_class_path: "latentskill.models.qwen_lora.Qwen3Config"
+  tokenizer_from: "${paths.model_path}"
+  model_from: "${paths.model_path}"
+
+hypernetwork:
+  type: "transformer"
+  method: "rl"
+  transformer_cfg:
+    encoder_cfg:
+      d_model: 4096
+      nhead: 32
+      dim_feedforward: 8192
+      dropout: 0
+      activation: gelu
+      layer_norm_eps: 0.00001
+      batch_first: True
+      norm_first: False
+      bias: True
+    couple_encoder_cfg:
+      d_model: 4096
+      nhead: 32
+      dim_feedforward: 8192
+      dropout: 0
+      activation: gelu
+      layer_norm_eps: 0.00001
+      batch_first: True
+      norm_first: False
+      bias: True
+    layer_transformer_first: True
+    mean_pool_size: 1
+    num_layers: 4
+    couple_num_layers: 0
+    scale: 0.001
+  linear_cfg:
+    num_layers: 4
+    linear_hidden_dim: 8192
+    scale: 0.001
+    bias: false
+  linear_gate_cfg:
+    num_layers: 4
+    linear_hidden_dim: 8192
+    scale: 0.001
+    bias: false
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${paths.checkpoint_root}/${name}/${mode}/${now:%H-%M-%S}
+  output_subdir: null
+
+hidden_size: -1
+num_layers: -1
+num_mem_token: 4
+
+curriculum:
+  stages:
+    - start_epoch: 1
+      end_epoch: 2
+      ratios:
+        1: 1.0
+
+    - start_epoch: 3
+      end_epoch: 5
+      ratios:
+        1: 0.70
+        2: 0.30
+
+    - start_epoch: 6
+      end_epoch: 8
+      ratios:
+        1: 0.55
+        2: 0.35
+        3: 0.10
+
+    - start_epoch: 9
+      end_epoch: 10
+      ratios:
+        1: 0.45
+        2: 0.40
+        3: 0.15

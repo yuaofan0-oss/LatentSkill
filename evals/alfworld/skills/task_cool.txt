@@ -1,0 +1,11 @@
+### Cool Skills
+- **Systematic Object Hunt**: Sweep every unvisited surface and open each closed container until the exact required object is found; never loop over already-checked empty spots.
+  _Apply when: Immediately after receiving a cool-task and before any object is held._
+- **Confirm Object Match**: After picking up an item, verify it matches the requested type; if not, drop it and resume the search.
+  _Apply when: Whenever you acquire an object but the goal object is still unmet._
+- **Prep Cooling Appliance**: Locate the fridge first and open it so it’s ready for use before or immediately after grabbing the target object.
+  _Apply when: As soon as the fridge comes into view or right after acquiring the target object._
+- **Enforce Cooling Before Placement**: Do not place the target object in its final location until you have successfully executed a cooling action with the fridge.
+  _Apply when: When holding the correct object and before any placement action is attempted._
+- **Direct Post-Cooling Delivery**: Once the object is cooled, navigate straight to the destination and place it without extraneous detours or re-searching.
+  _Apply when: Right after the cooling action succeeds._

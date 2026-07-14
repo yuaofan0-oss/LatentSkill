@@ -1,0 +1,7 @@
+### General Principles
+- **Decompose Then Search**: Break the question into minimal sub-questions (entities, attributes, relations) and handle each with its own query before synthesizing the final answer.
+- **Precision Query Crafting**: Compose searches with the exact entity name plus the sought attribute (e.g., "<entity> release date"), avoiding filler words to maximize relevant hits.
+- **Iterative Query Refinement**: If top results don’t yield direct evidence, rephrase by adding qualifiers (dates, roles, context) or alternate names instead of repeating the same query.
+- **Source-Backed Assertions**: Only state an answer once the supporting evidence (reliable source snippet) has been located and read; refrain from guessing or summarizing from memory.
+- **Cross-Check Multiple Sources**: Validate critical facts (dates, numbers, names) against at least two independent sources to avoid outdated or incorrect information.
+- **Explicit Ambiguity Resolution**: Detect ambiguous entity mentions and disambiguate by adding clarifiers (e.g., occupation, year, nationality) in the query or by exploring disambiguation pages.

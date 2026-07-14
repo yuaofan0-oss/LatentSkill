@@ -1,0 +1,31 @@
+General Principles:
+Systematic Exploration: Search every plausible surface or container exactly once before revisiting; prioritize unopened or unseen locations to cover the whole room methodically.
+Immediate Acquisition: As soon as a required object becomes visible and reachable, take it before moving elsewhere to avoid losing track or re-searching.
+Destination First Policy: After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+Track Counts & Progress: Maintain an internal counter of how many goal objects are still needed; stop searching or terminate episode only when the counter reaches zero.
+Use State-Changing Tools Early: For tasks requiring heated/cooled/clean objects, acquire the object, then immediately use the nearest suitable appliance to change its state before any placement.
+Establish Spatial Relations: When a goal specifies a relation (under/inside/on), first locate the reference object, adjust its state if needed (e.g., turn lamp on), then search the specified spatial region for the target object or place it there.
+
+Look At Obj In Light Skills:
+Seek Lamp Surfaces First: Head straight to furniture that commonly hosts a desklamp (desk, sidetable, nightstand) because the target must end up under that light.
+Apply when: Right after parsing a look-at-object-under-desklamp goal.
+Switch Lamp On: Issue 'use desklamp' as soon as you reach it so the light condition is satisfied before or immediately after handling the target object.
+Apply when: Upon arriving at a desklamp that is currently off.
+Acquire Or Fetch Target: If the target is on the lit surface, 'take' it; if found elsewhere, pick it up and carry it back to the lit lamp area.
+Apply when: Whenever the target object becomes visible, whether under the lamp or not.
+Systematic Surface Search: On each candidate lamp surface, look, open nearby containers/drawers once, then move on—ensuring all plausible lamp locations are covered.
+Apply when: After the lamp at the current surface is on and the target hasn’t been found.
+Prevent Action Loops: Avoid toggling the same lamp or re-examining the same empty spot; if no progress after one full check, relocate to a new plausible lamp location.
+Apply when: When repeated identical actions yield no new observations or objects.
+
+Mistakes to Avoid:
+Don't: Agent repeatedly revisits the same already-searched locations or containers instead of exploring new ones.
+Instead: Maintain an exploration map that records which rooms/containers have been fully inspected and prioritize unvisited or unopened candidates until all reasonable options are exhausted.
+Don't: Agent decides a closed container is empty without opening it, causing missed discoveries of target objects.
+Instead: Always open and inspect every plausible closed container at least once before ruling it out, using a checklist of unopened containers in the current room.
+Don't: Agent ignores or walks away from target objects that are already visible and reachable.
+Instead: Embed a perception buffer that immediately queues pick-up actions for visible goal objects and interrupts any ongoing exploratory loop.
+Don't: Agent keeps searching after acquiring enough items because it loses track of how many targets have been collected.
+Instead: Maintain explicit numerical goals and increment/decrement them on every successful pickup or placement, triggering transition to the next sub-goal when counts are satisfied.
+Don't: Agent fails to deliver a held target object to the known destination, instead continuing to wander.
+Instead: Adopt a hierarchical policy that, upon holding a goal object, immediately switches to a high-priority ‘deliver-to-goal’ subtask before resuming further search.

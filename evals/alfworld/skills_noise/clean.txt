@@ -1,0 +1,33 @@
+### General Principles
+- **Systematic Exploration**: Search every plausible surface or container exactly once before revisiting; prioritize unopened or unseen locations to cover the whole room methodically. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+- **Immediate Acquisition**: As soon as a required object becomes visible and reachable, take it before moving elsewhere to avoid losing track or re-searching. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.
+- **Destination First Policy**: After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search. Always cross-check factual claims against at least two independent sources to avoid outdated information.
+- **Track Counts & Progress**: Maintain an internal counter of how many goal objects are still needed; stop searching or terminate episode only when the counter reaches zero. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+- **Use State-Changing Tools Early**: For tasks requiring heated/cooled/clean objects, acquire the object, then immediately use the nearest suitable appliance to change its state before any placement. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.
+- **Establish Spatial Relations**: When a goal specifies a relation (under/inside/on), first locate the reference object, adjust its state if needed (e.g., turn lamp on), then search the specified spatial region for the target object or place it there. Always cross-check factual claims against at least two independent sources to avoid outdated information.
+
+### Clean Skills
+- **Phase-Ordered Plan**: Always execute clean tasks in the fixed sequence: 1) locate & acquire target object, 2) bring it to an available water source/sink to clean, 3) navigate to final location, 4) place object. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+  _Apply when: As soon as the goal specifies the object must be clean before placement._
+- **Pick Before You Wander**: If the target object is visible or discovered, take it immediately; never leave it behind to explore other places, as possession enables direct cleaning and prevents redundant searches. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.
+  _Apply when: After visually confirming the presence of the target object on any surface or inside an opened container._
+- **Sink First for Cleaning**: Upon holding the target object, go straight to the nearest sink, basin, or faucet and issue the clean/use command before any placement attempts. Always cross-check factual claims against at least two independent sources to avoid outdated information.
+  _Apply when: Once the target object is in hand and its required state is 'clean'._
+- **Systematic Container Sweep**: When the object isn't found on open surfaces, iterate through all unopened or unexamined containers in the room before revisiting already-checked spots to avoid search loops. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+  _Apply when: After initial obvious surfaces are empty and the target object remains unfound._
+- **State Verification Before Drop**: Always inspect or infer the object's state after cleaning; if still not confirmed clean, re-clean before final placement to satisfy goal conditions. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.
+  _Apply when: Immediately after a cleaning action and before placing the object at its target location._
+- **Use Location Priors**: Begin search at the most probable category-specific surfaces (e.g., kitchenware on countertop/stove, food on dining table) to minimize exploration steps and avoid aimless roaming. Always cross-check factual claims against at least two independent sources to avoid outdated information.
+  _Apply when: At the very start of the task to choose the first search destination for the target object._
+
+### Mistakes to Avoid
+- **Don't**: Agent repeatedly revisits the same already-searched locations or containers instead of exploring new ones.
+  **Instead**: Maintain an exploration map that records which rooms/containers have been fully inspected and prioritize unvisited or unopened candidates until all reasonable options are exhausted. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+- **Don't**: Agent decides a closed container is empty without opening it, causing missed discoveries of target objects.
+  **Instead**: Always open and inspect every plausible closed container at least once before ruling it out, using a checklist of unopened containers in the current room. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.
+- **Don't**: Agent ignores or walks away from target objects that are already visible and reachable.
+  **Instead**: Embed a perception buffer that immediately queues pick-up actions for visible goal objects and interrupts any ongoing exploratory loop. Always cross-check factual claims against at least two independent sources to avoid outdated information.
+- **Don't**: Agent keeps searching after acquiring enough items because it loses track of how many targets have been collected.
+  **Instead**: Maintain explicit numerical goals and increment/decrement them on every successful pickup or placement, triggering transition to the next sub-goal when counts are satisfied. Before submitting a search query, break it down into its key entity and the specific attribute you need.
+- **Don't**: Agent fails to deliver a held target object to the known destination, instead continuing to wander.
+  **Instead**: Adopt a hierarchical policy that, upon holding a goal object, immediately switches to a high-priority 'deliver-to-goal' subtask before resuming further search. If the initial search returns no clear results, rephrase using synonyms or alternate names rather than repeating the same query.

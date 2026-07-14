@@ -1,0 +1,11 @@
+### Direct Retrieval Skills
+- **Isolate Core Query**: Strip the question to its key entity + sought fact (who/what/when/where) and search exactly that pair first.
+  _Apply when: At the start of any direct-retrieval task._
+- **Refine When Empty**: If first search yields weak/no hits, instantly reformulate using synonyms, alternate names, dates, or quoted phrases instead of repeating the same query.
+  _Apply when: After an initial search returns no clear answer or only tangential results._
+- **Anchor With Quotes**: For song titles, quotes, episode names, etc., wrap the unique phrase in quotation marks to pull exact-match sources.
+  _Apply when: When the query contains distinctive phrases, lyrics, book/film titles, or direct quotations._
+- **Check Temporal Context**: Include recency cues (e.g., "current", year) in the search and verify publication date to avoid outdated or speculative info.
+  _Apply when: For questions about 'current', 'latest', or future events/releases._
+- **Evidence-Bound Answer**: Only state an answer that is explicitly supported by the retrieved text; if unclear, continue searching rather than guess or hallucinate.
+  _Apply when: Before finalizing any factoid answer._

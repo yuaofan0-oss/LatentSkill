@@ -1,0 +1,31 @@
+### General Principles
+- **Systematic Exploration**: Examine each plausible surface or container only once before returning to it; focus on locations that are unopened or have not yet been checked to ensure complete room coverage.
+- **Immediate Acquisition**: The moment a required object comes into view and is within reach, pick it up without delay rather than moving away, preventing the need for repeated searches.
+- **Destination First Policy**: Once a goal object is in hand, proceed immediately to the known destination receptacle to place it before continuing any additional searching.
+- **Track Counts & Progress**: Keep a running tally of remaining goal objects required; only cease searching or end the episode after the tally drops to zero.
+- **Use State-Changing Tools Early**: When tasks call for heated/cooled/clean objects, obtain the target first, then promptly apply the nearest appropriate appliance to alter its state prior to placing it.
+- **Establish Spatial Relations**: If a goal involves a spatial relation (under/inside/on), begin by finding the reference object, modify its state as required (e.g., turn lamp on), then look within the indicated region for the target or deposit it there.
+
+### Cool Skills
+- **Systematic Object Hunt**: Scan every surface not yet visited and open all closed containers until the specific required object is located; do not revisit spots that have already been found empty.
+  _Apply when: Right after the cool task is assigned and before any object has been picked up._
+- **Confirm Object Match**: Once an item is picked up, check that it is the correct type requested; if it is not a match, put it down and continue searching.
+  _Apply when: Each time you pick up an object while the goal object requirement has not yet been fulfilled._
+- **Prep Cooling Appliance**: Find the fridge and open its door in advance so it is available for use either before or right after the target object is obtained.
+  _Apply when: As soon as the fridge is visible, or immediately upon acquiring the target object._
+- **Enforce Cooling Before Placement**: Refrain from putting the target object at its destination until a successful cooling action using the fridge has been completed.
+  _Apply when: While carrying the correct object and prior to any attempt to place it._
+- **Direct Post-Cooling Delivery**: As soon as cooling is complete, travel directly to the destination and place the object there without any unnecessary side trips or additional searching.
+  _Apply when: Immediately after the cooling action has been successfully completed._
+
+### Mistakes to Avoid
+- **Don't**: The agent keeps returning to locations or containers it has already searched rather than moving on to unexplored areas.
+  **Instead**: Keep a record of which rooms and containers have been thoroughly checked, giving priority to unvisited or unopened options until every reasonable possibility has been covered.
+- **Don't**: The agent assumes a closed container holds nothing without physically opening and checking it, leading to overlooked target objects.
+  **Instead**: Open and examine every viable closed container at minimum once before dismissing it, tracking which containers in the current room remain unopened.
+- **Don't**: The agent overlooks or moves past target objects that are already in plain sight and within reach.
+  **Instead**: Use a mechanism that instantly schedules pickup actions for any visible goal objects, breaking out of whatever exploratory routine is currently active.
+- **Don't**: The agent continues hunting for objects even after collecting the required number because it fails to track how many have been gathered.
+  **Instead**: Track specific numerical targets and update them after each successful pickup or placement, switching to the next sub-goal as soon as the required count is met.
+- **Don't**: The agent carries a target object without bringing it to the known destination, wandering aimlessly instead.
+  **Instead**: Apply a priority-based approach where holding a goal object automatically triggers a high-priority delivery subtask that must complete before any further searching resumes.

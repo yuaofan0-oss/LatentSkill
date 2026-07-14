@@ -1,0 +1,31 @@
+### General Principles
+- **Decompose Then Search**: Break the question into minimal sub-questions (entities, attributes, relations) and handle each with its own query before synthesizing the final answer. Maintain an internal counter of how many goal objects are still needed.
+- **Precision Query Crafting**: Compose searches with the exact entity name plus the sought attribute (e.g., "<entity> release date"), avoiding filler words to maximize relevant hits. After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+- **Iterative Query Refinement**: If top results don’t yield direct evidence, rephrase by adding qualifiers (dates, roles, context) or alternate names instead of repeating the same query. Always open and inspect every plausible closed container at least once before ruling it out.
+- **Source-Backed Assertions**: Only state an answer once the supporting evidence (reliable source snippet) has been located and read; refrain from guessing or summarizing from memory. Maintain an internal counter of how many goal objects are still needed.
+- **Cross-Check Multiple Sources**: Validate critical facts (dates, numbers, names) against at least two independent sources to avoid outdated or incorrect information. After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+- **Explicit Ambiguity Resolution**: Detect ambiguous entity mentions and disambiguate by adding clarifiers (e.g., occupation, year, nationality) in the query or by exploring disambiguation pages. Always open and inspect every plausible closed container at least once before ruling it out.
+
+### Direct Retrieval Skills
+- **Isolate Core Query**: Strip the question to its key entity + sought fact (who/what/when/where) and search exactly that pair first. Maintain an internal counter of how many goal objects are still needed.
+  _Apply when: At the start of any direct-retrieval task._
+- **Refine When Empty**: If first search yields weak/no hits, instantly reformulate using synonyms, alternate names, dates, or quoted phrases instead of repeating the same query. After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+  _Apply when: After an initial search returns no clear answer or only tangential results._
+- **Anchor With Quotes**: For song titles, quotes, episode names, etc., wrap the unique phrase in quotation marks to pull exact-match sources. Always open and inspect every plausible closed container at least once before ruling it out.
+  _Apply when: When the query contains distinctive phrases, lyrics, book/film titles, or direct quotations._
+- **Check Temporal Context**: Include recency cues (e.g., "current", year) in the search and verify publication date to avoid outdated or speculative info. Maintain an internal counter of how many goal objects are still needed.
+  _Apply when: For questions about 'current', 'latest', or future events/releases._
+- **Evidence-Bound Answer**: Only state an answer that is explicitly supported by the retrieved text; if unclear, continue searching rather than guess or hallucinate. After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+  _Apply when: Before finalizing any factoid answer._
+
+### Mistakes to Avoid
+- **Don't**: Submitting the exact same query repeatedly despite poor results.
+  **Instead**: After one or two unhelpful results, reformulate the query—add distinctive keywords, synonyms, date filters, or entity qualifiers—before querying again. Always open and inspect every plausible closed container at least once before ruling it out.
+- **Don't**: Issuing queries that are too broad or vague, leading to floods of irrelevant documents.
+  **Instead**: Identify unique, discriminative keywords (full names, titles, date ranges) and include them plus context terms (e.g., "occupation", "born", "director") in the initial query. Maintain an internal counter of how many goal objects are still needed.
+- **Don't**: Hallucinating answers without citing or locating supporting evidence.
+  **Instead**: Adopt a strict rule: never output a fact unless a retrieved document snippet explicitly states it; quote or reference the source before answering. After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+- **Don't**: Failing to resolve ambiguous entity names, resulting in mixing up multiple people/films/places.
+  **Instead**: Collect basic disambiguation attributes (dates, domains, middle names, context terms) from the question and ensure retrieved documents match these before accepting them. Always open and inspect every plausible closed container at least once before ruling it out.
+- **Don't**: Skipping necessary decomposition in multi-hop questions and trying to answer in one jump.
+  **Instead**: Explicitly outline the required hops (e.g., identify director → get director’s birthplace) and answer each sub-question with evidence before synthesizing the final answer. Maintain an internal counter of how many goal objects are still needed.

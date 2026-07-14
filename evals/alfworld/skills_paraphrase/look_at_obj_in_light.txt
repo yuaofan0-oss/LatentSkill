@@ -1,0 +1,31 @@
+### General Principles
+- **Systematic Exploration**: Examine each plausible surface or container only once before returning to it; focus on locations that are unopened or have not yet been checked to ensure complete room coverage.
+- **Immediate Acquisition**: The moment a required object comes into view and is within reach, pick it up without delay rather than moving away, preventing the need for repeated searches.
+- **Destination First Policy**: Once a goal object is in hand, proceed immediately to the known destination receptacle to place it before continuing any additional searching.
+- **Track Counts & Progress**: Keep a running tally of remaining goal objects required; only cease searching or end the episode after the tally drops to zero.
+- **Use State-Changing Tools Early**: When tasks call for heated/cooled/clean objects, obtain the target first, then promptly apply the nearest appropriate appliance to alter its state prior to placing it.
+- **Establish Spatial Relations**: If a goal involves a spatial relation (under/inside/on), begin by finding the reference object, modify its state as required (e.g., turn lamp on), then look within the indicated region for the target or deposit it there.
+
+### Look At Obj In Light Skills
+- **Seek Lamp Surfaces First**: Move directly to furniture pieces that typically support a desklamp (desk, sidetable, nightstand), since the target object needs to be positioned beneath that light.
+  _Apply when: As soon as a look-at-object-under-desklamp goal has been identified._
+- **Switch Lamp On**: Trigger the 'use desklamp' command the moment you reach it, ensuring the lighting requirement is fulfilled either before or right as the target object is handled.
+  _Apply when: When you arrive at a desklamp that is not yet on._
+- **Acquire Or Fetch Target**: If the target is already on the illuminated surface, pick it up; if it is elsewhere, retrieve it and bring it to the area under the lit lamp.
+  _Apply when: Whenever the target object is spotted, regardless of whether it is under the lamp._
+- **Systematic Surface Search**: At every potential lamp surface, inspect the area, open adjacent containers/drawers a single time, then proceed—making sure all possible lamp locations receive at least one check.
+  _Apply when: Once the lamp at the current location has been turned on and the target remains unfound._
+- **Prevent Action Loops**: Do not toggle the same lamp repeatedly or re-inspect spots that have already been found empty; if a complete check yields nothing new, move on to a different viable lamp location.
+  _Apply when: Whenever performing the same action multiple times produces no new discoveries or objects._
+
+### Mistakes to Avoid
+- **Don't**: The agent keeps returning to locations or containers it has already searched rather than moving on to unexplored areas.
+  **Instead**: Keep a record of which rooms and containers have been thoroughly checked, giving priority to unvisited or unopened options until every reasonable possibility has been covered.
+- **Don't**: The agent assumes a closed container holds nothing without physically opening and checking it, leading to overlooked target objects.
+  **Instead**: Open and examine every viable closed container at minimum once before dismissing it, tracking which containers in the current room remain unopened.
+- **Don't**: The agent overlooks or moves past target objects that are already in plain sight and within reach.
+  **Instead**: Use a mechanism that instantly schedules pickup actions for any visible goal objects, breaking out of whatever exploratory routine is currently active.
+- **Don't**: The agent continues hunting for objects even after collecting the required number because it fails to track how many have been gathered.
+  **Instead**: Track specific numerical targets and update them after each successful pickup or placement, switching to the next sub-goal as soon as the required count is met.
+- **Don't**: The agent carries a target object without bringing it to the known destination, wandering aimlessly instead.
+  **Instead**: Apply a priority-based approach where holding a goal object automatically triggers a high-priority delivery subtask that must complete before any further searching resumes.

@@ -1,0 +1,33 @@
+### General Principles
+- **Systematic Exploration**: Examine each plausible surface or container only once before returning to it; focus on locations that are unopened or have not yet been checked to ensure complete room coverage.
+- **Immediate Acquisition**: The moment a required object comes into view and is within reach, pick it up without delay rather than moving away, preventing the need for repeated searches.
+- **Destination First Policy**: Once a goal object is in hand, proceed immediately to the known destination receptacle to place it before continuing any additional searching.
+- **Track Counts & Progress**: Keep a running tally of remaining goal objects required; only cease searching or end the episode after the tally drops to zero.
+- **Use State-Changing Tools Early**: When tasks call for heated/cooled/clean objects, obtain the target first, then promptly apply the nearest appropriate appliance to alter its state prior to placing it.
+- **Establish Spatial Relations**: If a goal involves a spatial relation (under/inside/on), begin by finding the reference object, modify its state as required (e.g., turn lamp on), then look within the indicated region for the target or deposit it there.
+
+### Clean Skills
+- **Phase-Ordered Plan**: Execute cleaning tasks by following this strict order: 1) find and obtain the target object, 2) carry it to a water source/sink for cleaning, 3) travel to the final destination, 4) set it down.
+  _Apply when: From the moment the goal states that the object must be cleaned prior to being placed._
+- **Pick Before You Wander**: When the target object is spotted or found, grab it right away; do not leave it to explore elsewhere, since having it allows cleaning to proceed and avoids unnecessary re-searching.
+  _Apply when: Once the target object has been visually confirmed on a surface or within an opened container._
+- **Sink First for Cleaning**: With the target object in hand, head directly to the closest sink, basin, or faucet and run the clean/use action before making any attempt to place it.
+  _Apply when: As soon as the object is being carried and must be in a 'clean' state._
+- **Systematic Container Sweep**: If the object cannot be found on exposed surfaces, work through every unopened or unexamined container in the room before going back to spots already searched, preventing repetitive loops.
+  _Apply when: Once the initially obvious surfaces have been checked and the target object has not yet been found._
+- **State Verification Before Drop**: After cleaning, always check or deduce the object's current state; if it has not been confirmed clean, perform another cleaning pass before placing it at the destination.
+  _Apply when: Right after a cleaning action has been carried out and before the object is placed at its target location._
+- **Use Location Priors**: Start the search at surfaces where the target category is most likely to appear (e.g., kitchenware near countertop/stove, food on dining table) to reduce unnecessary wandering.
+  _Apply when: At the beginning of the task when deciding where to look first for the target object._
+
+### Mistakes to Avoid
+- **Don't**: The agent keeps returning to locations or containers it has already searched rather than moving on to unexplored areas.
+  **Instead**: Keep a record of which rooms and containers have been thoroughly checked, giving priority to unvisited or unopened options until every reasonable possibility has been covered.
+- **Don't**: The agent assumes a closed container holds nothing without physically opening and checking it, leading to overlooked target objects.
+  **Instead**: Open and examine every viable closed container at minimum once before dismissing it, tracking which containers in the current room remain unopened.
+- **Don't**: The agent overlooks or moves past target objects that are already in plain sight and within reach.
+  **Instead**: Use a mechanism that instantly schedules pickup actions for any visible goal objects, breaking out of whatever exploratory routine is currently active.
+- **Don't**: The agent continues hunting for objects even after collecting the required number because it fails to track how many have been gathered.
+  **Instead**: Track specific numerical targets and update them after each successful pickup or placement, switching to the next sub-goal as soon as the required count is met.
+- **Don't**: The agent carries a target object without bringing it to the known destination, wandering aimlessly instead.
+  **Instead**: Apply a priority-based approach where holding a goal object automatically triggers a high-priority delivery subtask that must complete before any further searching resumes.

@@ -1,0 +1,21 @@
+# Install PyTorch separately for your CUDA/CPU platform.
+accelerate>=1.11.0
+alfworld>=0.4.2
+datasets>=4.4.1
+faiss-cpu>=1.8.0
+fastapi>=0.115.0
+huggingface-hub>=0.36.0
+hydra-core>=1.3.2
+matplotlib>=3.10.0
+modelscope>=1.31.0
+multiprocess>=0.70.16
+numpy>=1.26.0
+omegaconf>=2.3.0
+pandas>=2.0.0
+rouge>=1.0.1
+scikit-learn>=1.7.0
+seaborn>=0.13.0
+tensorboard>=2.20.0
+tqdm>=4.66.0
+transformers>=4.57.0
+uvicorn>=0.30.0

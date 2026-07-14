@@ -1,0 +1,31 @@
+### General Principles
+- **Question Decomposition**: Identify the core entities, attributes, and relationships within a question and address each component through dedicated queries before combining results into a final answer.
+- **Targeted Query Construction**: Formulate searches using the precise entity name paired with the required attribute, omitting unnecessary words to improve result relevance.
+- **Progressive Query Adjustment**: When initial results lack direct evidence, modify the query by incorporating additional context, role descriptors, or alternative terminology rather than resubmitting the original search.
+- **Evidence-Grounded Responses**: Deliver an answer only after locating and reading a credible source snippet that explicitly supports it; avoid relying on memory or inference.
+- **Multi-Source Verification**: Confirm key facts such as dates, figures, and names using at least two separate independent sources to prevent errors from stale or inaccurate data.
+- **Disambiguation by Clarification**: Identify vague or ambiguous entity references and resolve them by appending distinguishing details such as profession, timeframe, or nationality to the query, or by consulting disambiguation resources.
+
+### Comparison Skills
+- **Separate and Identify**: Begin by dividing the question into its constituent entities and pinpointing the single attribute to be compared, ensuring every subsequent query is precise and yields directly comparable data.
+  _Apply when: At the moment you read any comparison-type question._
+- **Independent Attribute Retrieval**: Fetch the target attribute for each entity through separate, attribute-focused searches and record the raw retrieved values before any analysis.
+  _Apply when: Immediately after identifying entities and the comparison attribute._
+- **Standardize Prior to Comparison**: Transform retrieved values into a uniform, directly comparable format by standardizing dates, computing ages, or mapping geographic demonyms before evaluating equality or order.
+  _Apply when: After gathering each entity's attribute but before drawing any conclusion._
+- **Refine or Acknowledge Gaps**: If a lookup returns no clear result or multiple conflicting answers, narrow the query with additional context such as profession, year, or language; if data remains insufficient, acknowledge the limitation rather than inferring without evidence.
+  _Apply when: Whenever an attribute lookup returns ambiguous, missing, or conflicting information._
+- **Transparent Comparative Reasoning**: Explicitly state each normalized value and carry out the logical comparison to derive the answer, maintaining full traceability and avoiding unsupported conclusions.
+  _Apply when: As the final synthesis step before outputting the comparison result._
+
+### Mistakes to Avoid
+- **Don't**: Submitting the exact same query repeatedly despite poor results.
+  **Instead**: After one or two unhelpful results, reformulate the query by adding distinctive keywords, synonyms, date filters, or entity qualifiers before querying again.
+- **Don't**: Issuing queries that are too broad or vague, leading to floods of irrelevant documents.
+  **Instead**: Identify unique, discriminative keywords such as full names, titles, and date ranges, and include them along with context terms like occupation, born, or director in the initial query.
+- **Don't**: Hallucinating answers without citing or locating supporting evidence.
+  **Instead**: Adopt a strict rule: never output a fact unless a retrieved document snippet explicitly states it; reference the source before answering.
+- **Don't**: Failing to resolve ambiguous entity names, resulting in mixing up multiple people, films, or places.
+  **Instead**: Collect disambiguation attributes such as dates, domains, middle names, and context terms from the question and verify that retrieved documents match these before accepting them.
+- **Don't**: Skipping necessary decomposition in multi-hop questions and trying to answer in one jump.
+  **Instead**: Explicitly outline the required hops and answer each sub-question with evidence before synthesizing the final answer.

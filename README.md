@@ -1,83 +1,268 @@
 # LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2604.02029"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2606.06087"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper"></a>
   <a href="https://github.com/yuaofan0-oss/LatentSkill"><img src="https://img.shields.io/badge/Code-GitHub-blue" alt="Code"></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
+  <a href="https://huggingface.co/datasets/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Data-HuggingFace-yellow" alt="Data"></a>
+  <a href="https://huggingface.co/datasets/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Checkpoints-HuggingFace-yellow" alt="Checkpoints"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
 </p>
 
-This is the official repository for the paper *"LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents"*.
-
+This is the official repository for **LatentSkill**, a method that converts reusable textual agent skills into plug-and-play LoRA adapters through a hypernetwork-based skill compiler. Instead of injecting skill text into every prompt, LatentSkill stores skill knowledge in weight space, reducing prompt overhead while keeping skills modular, scalable, and composable.
 
 ## Overview
 
-Agent systems increasingly rely on textual skills — reusable procedures that encode task strategies, tool-use patterns, and recovery heuristics — to solve complex tasks. However, injecting these skills into the prompt at every decision step incurs substantial context overhead and exposes skill content as plaintext.
-
-**LatentSkill** addresses this by converting textual skills into plug-and-play LoRA adapters through a pretrained hypernetwork. Instead of delivering skills through the context window, LatentSkill stores skill knowledge in **weight space**, removing per-step skill tokens while preserving modular loading, scaling, and composition.
-
 <p align="center">
-  <img src="framework.png" width="95%" alt="LatentSkill Framework">
+  <img src="framework.png" width="95%" alt="LatentSkill framework">
 </p>
 
-<p align="center"><em>Figure: Overview of LatentSkill. Left: textual skills are transformed into in-weight latent skills through hypernetwork-based LoRA generation. Middle: the skill compiler is trained by skill document pretraining and trajectory-supervised fine-tuning. Right: the resulting latent skills support structured semantic geometry, controllable injection strength, and composable parameter-space arithmetic at inference time.</em></p>
+LatentSkill follows a two-stage training pipeline:
 
-## Key Findings
+1. **Skill-document pretraining** teaches the skill compiler to map reusable skill text into LoRA adapter weights.
+2. **Trajectory-supervised fine-tuning** aligns generated adapters with agent behavior on downstream tasks.
 
-- **Zero Skill Tokens**: Skill knowledge is stored in LoRA weights rather than the prompt, reducing prefill overhead by up to 72.2%.
-- **Plug-and-Play Modularity**: Generated skill LoRAs can be loaded, unloaded, replaced, or scaled without retraining the backbone.
-- **Structured Weight Space**: Skill LoRAs form semantically meaningful clusters — skills from different domains are clearly separable in weight space.
-- **Controllable Injection**: A continuous scaling coefficient α precisely modulates skill influence, following an interpretable inverted-U performance curve.
-- **Composable Skills**: Skills can be combined through parameter-space arithmetic when decomposed into semantically aligned components.
+At inference time, the compiler reads a skill description once, generates a task-specific adapter, and runs the frozen backbone model without including the full skill text in the prompt.
 
-## Main Results
+We are actively extending LatentSkill to additional backbone models. Please stay tuned for future releases.
 
-### ALFWorld (Success Rate %)
+## Installation
 
-<p align="center">
-  <img src="table1.png" width="90%" alt="ALFWorld Results">
-</p>
+```bash
+git clone https://github.com/yuaofan0-oss/LatentSkill.git
+cd LatentSkill
 
-LatentSkill reaches **74.3%** and **69.4%** average success on the seen and unseen splits, improving over In-Context Skill by **+21.4** and **+13.4** points with **64.1% fewer prefill tokens**.
+conda create -n latentskill python=3.10 -y
+conda activate latentskill
 
-### Search-QA (Exact Match %)
+# Install PyTorch according to your CUDA version.
+# Example for CUDA 12.1:
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
-<p align="center">
-  <img src="table2.png" width="90%" alt="Search-QA Results">
-</p>
+pip install -r requirements.txt
+pip install -U huggingface_hub
+```
 
-LatentSkill achieves the highest average EM of **35.6**, improving over In-Context Skill by **+3.0** points with **72.2% lower skill-token overhead**.
+## Repository Layout
 
-## Method
+```text
+latentskill/
+  models/        Qwen3 LoRA wrapper and skill hypernetwork
+  data/          dataset loaders and group-index preprocessing
+  training/      pretraining, fine-tuning, and checkpoint utilities
+  utils/         distributed training and helper utilities
 
-LatentSkill operates in two training stages:
+configs/
+  models/        model and hypernetwork configurations
 
-1. **Skill Document Pretraining** — The hypernetwork-based skill compiler is pretrained on ~171K open-source skill documents (~300M tokens) crawled from GitHub. The compiler learns to map procedural text into LoRA adapter weights via reconstruction and completion objectives.
+scripts/
+  train/         pretraining and fine-tuning launch scripts
 
-2. **Trajectory-Supervised Fine-Tuning** — The compiler is fine-tuned on teacher agent trajectories from ALFWorld and Search-QA, aligning generated LoRAs with task-level behavioral policies. The backbone LLM (Qwen3-8B) remains frozen throughout both stages.
+evals/
+  alfworld/      ALFWorld evaluation
+  searchqa/      SearchQA evaluation and retrieval server
+```
 
-At inference time, the compiler generates a skill-specific LoRA adapter in a single forward pass. The adapter is mounted on the frozen backbone, and the original skill text is never included in the prompt.
+## Resources
 
-## Release
+Prepare the following resources under the project root, or pass custom paths through the environment variables shown below.
 
-| Resource | Status |
+| Resource | Target path |
 |---|---|
-| 📄 Paper | [Available](https://arxiv.org/abs/2604.02029) |
-| 💻 Code | 🚧 Coming soon |
-| 📦 Data | 🚧 Coming soon |
-| 🏋️ Checkpoints | 🚧 Coming soon |
+| Qwen3-8B backbone | `models/Qwen3-8B/` |
+| LatentSkill pretraining data | `data/skill_pretrain/` |
+| LatentSkill fine-tuning data | `data/skill_ift/` |
+| SearchQA test data | `data/search_test/` |
+| Pretrained LatentSkill checkpoint | `checkpoints/latentskill_pretrain_qwen3_8b/pretrain/` |
+| Fine-tuned LatentSkill checkpoint | `checkpoints/latentskill_sft_qwen3_8b/train/` |
+| E5 retriever model | `models/e5-base-v2/` |
+| SearchQA wiki index and corpus | `wiki_index/` |
+| ALFWorld data | `alfworld_data/alfworld/` |
+
+Download the LatentSkill data released with this project:
+
+```bash
+hf download AofaYu71/LatentSkill \
+  --repo-type dataset \
+  --local-dir . \
+  --include "data/skill_pretrain/train.jsonl" \
+            "data/skill_pretrain/val.jsonl" \
+            "data/skill_ift/train.json" \
+            "data/search_test/search_test_all.jsonl"
+```
+
+Download the released LatentSkill checkpoints:
+
+```bash
+hf download AofaYu71/LatentSkill \
+  --repo-type dataset \
+  --local-dir . \
+  --include "checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
+            "checkpoints/latentskill_sft_qwen3_8b/train.tar.gz"
+```
+
+Extract the checkpoint archives:
+
+```bash
+tar -xzf checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz \
+  -C checkpoints/latentskill_pretrain_qwen3_8b/
+
+tar -xzf checkpoints/latentskill_sft_qwen3_8b/train.tar.gz \
+  -C checkpoints/latentskill_sft_qwen3_8b/
+```
+
+Download the backbone and retriever models:
+
+```bash
+hf download Qwen/Qwen3-8B --local-dir models/Qwen3-8B
+hf download intfloat/e5-base-v2 --local-dir models/e5-base-v2
+```
+
+Please download the SearchQA wiki index and corpus, then place them at:
+
+```text
+wiki_index/e5_Flat.index
+wiki_index/wiki-18.jsonl
+```
+
+Please download ALFWorld data and place it under:
+
+```text
+alfworld_data/alfworld/
+```
+
+The expected ALFWorld layout is:
+
+```text
+alfworld_data/alfworld/json_2.1.1/train/
+alfworld_data/alfworld/json_2.1.1/valid_seen/
+alfworld_data/alfworld/json_2.1.1/valid_unseen/
+alfworld_data/alfworld/logic/alfred.pddl
+alfworld_data/alfworld/logic/alfred.twl2
+alfworld_data/alfworld/detectors/mrcnn.pth
+```
+
+## Training
+
+Skill-document pretraining:
+
+```bash
+MODEL_PATH=models/Qwen3-8B \
+DATA_ROOT=data \
+CHECKPOINT_ROOT=checkpoints \
+bash scripts/train/pretrain_qwen3_8b.sh
+```
+
+Trajectory-supervised fine-tuning:
+
+```bash
+MODEL_PATH=models/Qwen3-8B \
+DATA_ROOT=data \
+CHECKPOINT_ROOT=checkpoints \
+PRETRAIN_CHECKPOINT_NAME=latentskill_pretrain_qwen3_8b \
+bash scripts/train/sft_qwen3_8b.sh
+```
+
+The scripts support common overrides such as `NUM_GPUS`, `LEARNING_RATE`, `NUM_EPOCHS`, `TRAIN_BATCH_SIZE`, `EVAL_BATCH_SIZE`, `CONTEXT_MAX_LEN`, and `CONVERSATION_MAX_LEN`.
+
+## Evaluation
+
+### ALFWorld
+
+```bash
+export PROJECT_ROOT=/path/to/LatentSkill
+export CHECKPOINT_DIR=/path/to/your/ift_checkpoint
+export MODEL_PATH=/path/to/your/Qwen3-8B
+export ALFWORLD_DATA_ROOT=/path/to/your/alfworld_data/alfworld
+export ALFWORLD_CONFIG=/path/to/your/config_tw.yaml
+export ALFWORLD_SKILL_DIR=/path/to/your/alfworld_skill_texts
+export OUTPUT_DIR=/path/to/your/output_dir
+export LOG_DIR=/path/to/your/log_dir
+export GPU_ID=0
+
+mkdir -p "$OUTPUT_DIR" "$LOG_DIR"
+
+CUDA_VISIBLE_DEVICES="$GPU_ID" \
+PYTHONPATH="$PROJECT_ROOT" \
+python -m evals.alfworld.evaluate \
+  --checkpoint "$CHECKPOINT_DIR" \
+  --config_name models/qwen3_8b \
+  --split unseen \
+  --alfworld_data "$ALFWORLD_DATA_ROOT" \
+  --alfworld_config "$ALFWORLD_CONFIG" \
+  --skill_context_dir "$ALFWORLD_SKILL_DIR" \
+  --max_steps 50 \
+  --max_new_tokens 4096 \
+  --context_max_length 4096 \
+  --conversation_max_length 4096 \
+  --output_dir "$OUTPUT_DIR" \
+  --device cuda \
+2>&1 | tee "$LOG_DIR/alfworld.log"
+```
+
+### SearchQA
+
+Start a retrieval server separately or use the helper script in `evals/searchqa/run_eval.sh`. The evaluation command expects a running server at `RETRIEVAL_URL`.
+
+```bash
+export PROJECT_ROOT=/path/to/LatentSkill
+export CHECKPOINT_DIR=/path/to/your/ift_checkpoint
+export MODEL_PATH=/path/to/your/Qwen3-8B
+export SEARCHQA_TEST_DATA=/path/to/your/search_test_all.jsonl
+export SEARCHQA_SKILL_DIR=/path/to/your/searchqa_skill_texts
+export RETRIEVAL_URL=http://127.0.0.1:8000/retrieve
+export OUTPUT_DIR=/path/to/your/output_dir
+export LOG_DIR=/path/to/your/log_dir
+export GPU_ID=0
+
+mkdir -p "$OUTPUT_DIR" "$LOG_DIR"
+
+CUDA_VISIBLE_DEVICES="$GPU_ID" \
+PYTHONPATH="$PROJECT_ROOT" \
+python -m evals.searchqa.evaluate \
+  --checkpoint "$CHECKPOINT_DIR" \
+  --config_name models/qwen3_8b \
+  --test_data "$SEARCHQA_TEST_DATA" \
+  --skill_context_dir "$SEARCHQA_SKILL_DIR" \
+  --retrieval_url "$RETRIEVAL_URL" \
+  --retrieval_topk 3 \
+  --max_steps 4 \
+  --max_new_tokens 2048 \
+  --context_max_length 4096 \
+  --conversation_max_length 4096 \
+  --output_dir "$OUTPUT_DIR" \
+  --device cuda \
+2>&1 | tee "$LOG_DIR/searchqa.log"
+```
+
+To start the bundled E5 retrieval server with the default paths:
+
+```bash
+E5_MODEL=models/e5-base-v2 \
+python evals/searchqa/retrieval_server.py \
+  --index_path wiki_index/e5_Flat.index \
+  --corpus_path wiki_index/wiki-18.jsonl \
+  --retriever_name e5 \
+  --retriever_model models/e5-base-v2 \
+  --topk 3 \
+  --port 8000
+```
 
 ## Citation
 
-If you find this work useful, please cite our paper:
+If you find this work useful, please cite:
 
 ```bibtex
 @article{yu2026latentskillincontexttextualskills,
-      title={LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents}, 
+      title={LatentSkill: From In-Context Textual Skills to In-Weight Latent Skills for LLM Agents},
       author={Aofan Yu and Chenyu Zhou and Tianyi Xu and Zihan Guo and Rong Shan and Zhihui Fu and Jun Wang and Weiwen Liu and Yong Yu and Weinan Zhang and Jianghao Lin},
       year={2026},
       eprint={2606.06087},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2606.06087}, 
+      url={https://arxiv.org/abs/2606.06087},
 }
 ```
+
+## License
+
+This project is released under the MIT License.

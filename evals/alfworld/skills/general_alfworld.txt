@@ -1,0 +1,7 @@
+### General Principles
+- **Systematic Exploration**: Search every plausible surface or container exactly once before revisiting; prioritize unopened or unseen locations to cover the whole room methodically.
+- **Immediate Acquisition**: As soon as a required object becomes visible and reachable, take it before moving elsewhere to avoid losing track or re-searching.
+- **Destination First Policy**: After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+- **Track Counts & Progress**: Maintain an internal counter of how many goal objects are still needed; stop searching or terminate episode only when the counter reaches zero.
+- **Use State-Changing Tools Early**: For tasks requiring heated/cooled/clean objects, acquire the object, then immediately use the nearest suitable appliance to change its state before any placement.
+- **Establish Spatial Relations**: When a goal specifies a relation (under/inside/on), first locate the reference object, adjust its state if needed (e.g., turn lamp on), then search the specified spatial region for the target object or place it there.

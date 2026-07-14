@@ -1,0 +1,31 @@
+### General Principles
+- **Systematic Exploration**: Search every plausible surface or container exactly once before revisiting; prioritize unopened or unseen locations to cover the whole room methodically.
+- **Immediate Acquisition**: As soon as a required object becomes visible and reachable, take it before moving elsewhere to avoid losing track or re-searching.
+- **Destination First Policy**: After picking up a goal object, navigate directly to the known target receptacle and place it before resuming further search.
+- **Track Counts & Progress**: Maintain an internal counter of how many goal objects are still needed; stop searching or terminate episode only when the counter reaches zero.
+- **Use State-Changing Tools Early**: For tasks requiring heated/cooled/clean objects, acquire the object, then immediately use the nearest suitable appliance to change its state before any placement.
+- **Establish Spatial Relations**: When a goal specifies a relation (under/inside/on), first locate the reference object, adjust its state if needed (e.g., turn lamp on), then search the specified spatial region for the target object or place it there.
+
+### Pick And Place Skills
+- **Systematic First-Pass Search**: Maintain a checklist of all visible and closed containers/surfaces; open or inspect each unseen candidate exactly once before revisiting any location.
+  _Apply when: After reading the goal and before acquiring every required object._
+- **Grab When Seen**: Whenever a needed object is visible and reachable, immediately take it before moving elsewhere—do not leave targets uncollected.
+  _Apply when: Upon first sight of an unheld object that matches the goal specification._
+- **Transform Before Transport**: If the goal specifies a state change (e.g., heated, cooled, cleaned), perform the transformation at the nearest appropriate appliance before heading to the final destination.
+  _Apply when: Right after acquiring an object that must change state._
+- **Place Before More Search**: When holding any goal object and the target location is known and reachable, navigate there and place it immediately, then resume searching if more items are needed.
+  _Apply when: While carrying a required object and the destination has been identified._
+- **Track Counts for Multiples**: Maintain a tally of how many target objects are required, held, and already placed; stop searching only after the placed count meets the goal.
+  _Apply when: Throughout tasks demanding two or more instances of the same object._
+
+### Mistakes to Avoid
+- **Don't**: Agent repeatedly revisits the same already-searched locations or containers instead of exploring new ones.
+  **Instead**: Maintain an exploration map that records which rooms/containers have been fully inspected and prioritize unvisited or unopened candidates until all reasonable options are exhausted.
+- **Don't**: Agent decides a closed container is empty without opening it, causing missed discoveries of target objects.
+  **Instead**: Always open and inspect every plausible closed container at least once before ruling it out, using a checklist of unopened containers in the current room.
+- **Don't**: Agent ignores or walks away from target objects that are already visible and reachable.
+  **Instead**: Embed a perception buffer that immediately queues pick-up actions for visible goal objects and interrupts any ongoing exploratory loop.
+- **Don't**: Agent keeps searching after acquiring enough items because it loses track of how many targets have been collected.
+  **Instead**: Maintain explicit numerical goals and increment/decrement them on every successful pickup or placement, triggering transition to the next sub-goal when counts are satisfied.
+- **Don't**: Agent fails to deliver a held target object to the known destination, instead continuing to wander.
+  **Instead**: Adopt a hierarchical policy that, upon holding a goal object, immediately switches to a high-priority ‘deliver-to-goal’ subtask before resuming further search.

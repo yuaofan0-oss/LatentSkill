@@ -1,0 +1,11 @@
+### Mistakes to Avoid
+- **Don't**: Submitting the exact same query repeatedly despite poor results.
+  **Instead**: After one or two unhelpful results, reformulate the query—add distinctive keywords, synonyms, date filters, or entity qualifiers—before querying again.
+- **Don't**: Issuing queries that are too broad or vague, leading to floods of irrelevant documents.
+  **Instead**: Identify unique, discriminative keywords (full names, titles, date ranges) and include them plus context terms (e.g., "occupation", "born", "director") in the initial query.
+- **Don't**: Hallucinating answers without citing or locating supporting evidence.
+  **Instead**: Adopt a strict rule: never output a fact unless a retrieved document snippet explicitly states it; quote or reference the source before answering.
+- **Don't**: Failing to resolve ambiguous entity names, resulting in mixing up multiple people/films/places.
+  **Instead**: Collect basic disambiguation attributes (dates, domains, middle names, context terms) from the question and ensure retrieved documents match these before accepting them.
+- **Don't**: Skipping necessary decomposition in multi-hop questions and trying to answer in one jump.
+  **Instead**: Explicitly outline the required hops (e.g., identify director → get director’s birthplace) and answer each sub-question with evidence before synthesizing the final answer.

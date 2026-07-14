@@ -1,0 +1,31 @@
+### General Principles
+- **Question Decomposition**: Identify the core entities, attributes, and relationships within a question and address each component through dedicated queries before combining results into a final answer.
+- **Targeted Query Construction**: Formulate searches using the precise entity name paired with the required attribute, omitting unnecessary words to improve result relevance.
+- **Progressive Query Adjustment**: When initial results lack direct evidence, modify the query by incorporating additional context, role descriptors, or alternative terminology rather than resubmitting the original search.
+- **Evidence-Grounded Responses**: Deliver an answer only after locating and reading a credible source snippet that explicitly supports it; avoid relying on memory or inference.
+- **Multi-Source Verification**: Confirm key facts such as dates, figures, and names using at least two separate independent sources to prevent errors from stale or inaccurate data.
+- **Disambiguation by Clarification**: Identify vague or ambiguous entity references and resolve them by appending distinguishing details such as profession, timeframe, or nationality to the query, or by consulting disambiguation resources.
+
+### Multi Hop Reasoning Skills
+- **Upfront Question Decomposition**: Divide the main query into clearly defined sub-questions that identify each relevant entity and the specific attribute or relationship to retrieve before initiating any search.
+  _Apply when: Any multi-hop question that links two or more entities or facts._
+- **Focused Sequential Retrieval**: Submit individual, narrowly scoped queries for each sub-question or entity rather than issuing a single broad search, ensuring precise intermediate facts are collected.
+  _Apply when: After decomposition, when distinct pieces of information must be collected individually._
+- **Gather Before Concluding**: Obtain concrete values for all relevant items before performing any comparison or drawing conclusions to prevent premature or unsupported answers.
+  _Apply when: Comparative tasks involving earlier/later, older/younger, bigger/smaller, etc._
+- **Descriptive Disambiguation**: Append clarifying descriptors such as profession, year, medium, or location to queries to differentiate between entities sharing identical or similar names and prevent fact conflation.
+  _Apply when: Whenever an entity name is generic or shared by multiple subjects._
+- **Adaptive Query Reformulation**: When a search fails or returns ambiguous results, promptly revise the query using synonyms, alternative titles, or supplementary context instead of repeating the same search.
+  _Apply when: After a search yields no relevant results or conflicting information._
+
+### Mistakes to Avoid
+- **Don't**: Submitting the exact same query repeatedly despite poor results.
+  **Instead**: After one or two unhelpful results, reformulate the query by adding distinctive keywords, synonyms, date filters, or entity qualifiers before querying again.
+- **Don't**: Issuing queries that are too broad or vague, leading to floods of irrelevant documents.
+  **Instead**: Identify unique, discriminative keywords such as full names, titles, and date ranges, and include them along with context terms like occupation, born, or director in the initial query.
+- **Don't**: Hallucinating answers without citing or locating supporting evidence.
+  **Instead**: Adopt a strict rule: never output a fact unless a retrieved document snippet explicitly states it; reference the source before answering.
+- **Don't**: Failing to resolve ambiguous entity names, resulting in mixing up multiple people, films, or places.
+  **Instead**: Collect disambiguation attributes such as dates, domains, middle names, and context terms from the question and verify that retrieved documents match these before accepting them.
+- **Don't**: Skipping necessary decomposition in multi-hop questions and trying to answer in one jump.
+  **Instead**: Explicitly outline the required hops and answer each sub-question with evidence before synthesizing the final answer.

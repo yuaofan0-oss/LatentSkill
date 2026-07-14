@@ -1,0 +1,31 @@
+### General Principles
+- **Systematic Exploration**: Examine each plausible surface or container only once before returning to it; focus on locations that are unopened or have not yet been checked to ensure complete room coverage.
+- **Immediate Acquisition**: The moment a required object comes into view and is within reach, pick it up without delay rather than moving away, preventing the need for repeated searches.
+- **Destination First Policy**: Once a goal object is in hand, proceed immediately to the known destination receptacle to place it before continuing any additional searching.
+- **Track Counts & Progress**: Keep a running tally of remaining goal objects required; only cease searching or end the episode after the tally drops to zero.
+- **Use State-Changing Tools Early**: When tasks call for heated/cooled/clean objects, obtain the target first, then promptly apply the nearest appropriate appliance to alter its state prior to placing it.
+- **Establish Spatial Relations**: If a goal involves a spatial relation (under/inside/on), begin by finding the reference object, modify its state as required (e.g., turn lamp on), then look within the indicated region for the target or deposit it there.
+
+### Heat Skills
+- **Secure Exact Target First**: Identify and retrieve precisely the object type specified in the goal before approaching the microwave or destination; do not accept substitutes (e.g., never swap a mug for a cup).
+  _Apply when: Upon noticing any potential candidate object, or while in the initial search phase, before interacting with any appliances._
+- **Systematic One-Pass Search**: Go through each likely surface or closed container a single time, opening and examining its contents; mentally note each checked location to prevent going back unnecessarily.
+  _Apply when: While still searching for the target object and it has not yet been located._
+- **Open Then Heat**: Once at the microwave with the target in hand, open its door, put the object inside, and run the heat action before departing.
+  _Apply when: As soon as you arrive at the microwave while carrying the target object._
+- **No Appliance Before Object**: Avoid traveling to or using the microwave or the final placement spot until the target object is already in hand, saving unnecessary movement.
+  _Apply when: Any time you are about to go to the microwave or destination while the required object is not yet held._
+- **Direct Post-Heat Placement**: Following the heating step, go directly to the designated destination and deposit the object in one action, with no side trips or additional exploration.
+  _Apply when: Immediately upon completing the heating action while still holding the object._
+
+### Mistakes to Avoid
+- **Don't**: The agent keeps returning to locations or containers it has already searched rather than moving on to unexplored areas.
+  **Instead**: Keep a record of which rooms and containers have been thoroughly checked, giving priority to unvisited or unopened options until every reasonable possibility has been covered.
+- **Don't**: The agent assumes a closed container holds nothing without physically opening and checking it, leading to overlooked target objects.
+  **Instead**: Open and examine every viable closed container at minimum once before dismissing it, tracking which containers in the current room remain unopened.
+- **Don't**: The agent overlooks or moves past target objects that are already in plain sight and within reach.
+  **Instead**: Use a mechanism that instantly schedules pickup actions for any visible goal objects, breaking out of whatever exploratory routine is currently active.
+- **Don't**: The agent continues hunting for objects even after collecting the required number because it fails to track how many have been gathered.
+  **Instead**: Track specific numerical targets and update them after each successful pickup or placement, switching to the next sub-goal as soon as the required count is met.
+- **Don't**: The agent carries a target object without bringing it to the known destination, wandering aimlessly instead.
+  **Instead**: Apply a priority-based approach where holding a goal object automatically triggers a high-priority delivery subtask that must complete before any further searching resumes.
