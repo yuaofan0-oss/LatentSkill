@@ -11,6 +11,30 @@ tags:
 - lora
 - hypernetwork
 - skill-learning
+configs:
+- config_name: skill_pretrain
+  data_files:
+  - split: train
+    path: skill_pretrain/train.jsonl
+  - split: validation
+    path: skill_pretrain/val.jsonl
+- config_name: skill_ift
+  data_files:
+  - split: train
+    path: skill_ift/train.json
+- config_name: search_test
+  data_files:
+  - split: test
+    path:
+    - search_test/2wikimultihopqa_test.jsonl
+    - search_test/bamboogle_test.jsonl
+    - search_test/comparison_214.jsonl
+    - search_test/hotpotqa_test.jsonl
+    - search_test/musique_test.jsonl
+    - search_test/nq_test.jsonl
+    - search_test/popqa_test.jsonl
+    - search_test/search_test_all.jsonl
+    - search_test/triviaqa_test.jsonl
 ---
 
 # LatentSkill Data
@@ -46,6 +70,8 @@ The repository contains:
 - `skill_pretrain/`: skill-document pretraining data.
 - `skill_ift/`: trajectory-supervised fine-tuning data.
 - `search_test/`: SearchQA evaluation data released with this project.
+
+The dataset card declares these as separate Hugging Face configs because the training and evaluation files serve different stages of the pipeline.
 
 ## Splits
 
