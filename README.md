@@ -4,7 +4,7 @@
   <a href="https://arxiv.org/abs/2606.06087"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="Paper"></a>
   <a href="https://github.com/yuaofan0-oss/LatentSkill"><img src="https://img.shields.io/badge/Code-GitHub-blue" alt="Code"></a>
   <a href="https://huggingface.co/datasets/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Data-HuggingFace-yellow" alt="Data"></a>
-  <a href="https://huggingface.co/datasets/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Checkpoints-HuggingFace-yellow" alt="Checkpoints"></a>
+  <a href="https://huggingface.co/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Checkpoints-HuggingFace-yellow" alt="Checkpoints"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
 </p>
 
@@ -69,11 +69,11 @@ Prepare the following resources under the project root, or pass custom paths thr
 | Resource | Target path |
 |---|---|
 | Qwen3-8B backbone | `models/Qwen3-8B/` |
-| LatentSkill pretraining data | `data/skill_pretrain/` |
-| LatentSkill fine-tuning data | `data/skill_ift/` |
-| SearchQA test data | `data/search_test/` |
-| Pretrained LatentSkill checkpoint | `checkpoints/latentskill_pretrain_qwen3_8b/pretrain/` |
-| Fine-tuned LatentSkill checkpoint | `checkpoints/latentskill_sft_qwen3_8b/train/` |
+| LatentSkill pretraining data | `data/skill_pretrain/` from the [dataset repo](https://huggingface.co/datasets/AofaYu71/LatentSkill) |
+| LatentSkill fine-tuning data | `data/skill_ift/` from the [dataset repo](https://huggingface.co/datasets/AofaYu71/LatentSkill) |
+| SearchQA test data | `data/search_test/` from the [dataset repo](https://huggingface.co/datasets/AofaYu71/LatentSkill) |
+| Pretrained LatentSkill checkpoint | `checkpoints/latentskill_pretrain_qwen3_8b/pretrain/` from the [model repo](https://huggingface.co/AofaYu71/LatentSkill) |
+| Fine-tuned LatentSkill checkpoint | `checkpoints/latentskill_sft_qwen3_8b/train/` from the [model repo](https://huggingface.co/AofaYu71/LatentSkill) |
 | E5 retriever model | `models/e5-base-v2/` |
 | SearchQA wiki index and corpus | `wiki_index/` |
 | ALFWorld data | `alfworld_data/alfworld/` |
@@ -94,7 +94,7 @@ Download the released LatentSkill checkpoints:
 
 ```bash
 hf download AofaYu71/LatentSkill \
-  --repo-type dataset \
+  --repo-type model \
   --local-dir . \
   --include "checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
             "checkpoints/latentskill_sft_qwen3_8b/train.tar.gz"
