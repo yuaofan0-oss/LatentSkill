@@ -83,11 +83,19 @@ Download the LatentSkill data released with this project:
 ```bash
 hf download AofaYu71/LatentSkill \
   --repo-type dataset \
-  --local-dir . \
-  --include "data/skill_pretrain/train.jsonl" \
-            "data/skill_pretrain/val.jsonl" \
-            "data/skill_ift/train.json" \
-            "data/search_test/search_test_all.jsonl"
+  --local-dir data \
+  --include "skill_pretrain/train.jsonl" \
+            "skill_pretrain/val.jsonl" \
+            "skill_ift/train.json" \
+            "search_test/2wikimultihopqa_test.jsonl" \
+            "search_test/bamboogle_test.jsonl" \
+            "search_test/comparison_214.jsonl" \
+            "search_test/hotpotqa_test.jsonl" \
+            "search_test/musique_test.jsonl" \
+            "search_test/nq_test.jsonl" \
+            "search_test/popqa_test.jsonl" \
+            "search_test/search_test_all.jsonl" \
+            "search_test/triviaqa_test.jsonl"
 ```
 
 Download the released LatentSkill checkpoints:
@@ -95,9 +103,9 @@ Download the released LatentSkill checkpoints:
 ```bash
 hf download AofaYu71/LatentSkill \
   --repo-type model \
-  --local-dir . \
-  --include "checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
-            "checkpoints/latentskill_sft_qwen3_8b/train.tar.gz"
+  --local-dir checkpoints \
+  --include "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
+            "latentskill_sft_qwen3_8b/train.tar.gz"
 ```
 
 Extract the checkpoint archives:

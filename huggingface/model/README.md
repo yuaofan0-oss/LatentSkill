@@ -27,11 +27,10 @@ Dataset repository: https://huggingface.co/datasets/AofaYu71/LatentSkill
 ## Contents
 
 ```text
-checkpoints/
-  latentskill_pretrain_qwen3_8b/
-    pretrain.tar.gz
-  latentskill_sft_qwen3_8b/
-    train.tar.gz
+latentskill_pretrain_qwen3_8b/
+  pretrain.tar.gz
+latentskill_sft_qwen3_8b/
+  train.tar.gz
 ```
 
 The checkpoint archives are expected to be extracted under the code repository root:
@@ -48,9 +47,9 @@ From the root of the code repository:
 ```bash
 hf download AofaYu71/LatentSkill \
   --repo-type model \
-  --local-dir . \
-  --include "checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
-            "checkpoints/latentskill_sft_qwen3_8b/train.tar.gz"
+  --local-dir checkpoints \
+  --include "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
+            "latentskill_sft_qwen3_8b/train.tar.gz"
 
 tar -xzf checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz \
   -C checkpoints/latentskill_pretrain_qwen3_8b/

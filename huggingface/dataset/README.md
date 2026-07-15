@@ -24,21 +24,37 @@ Checkpoint repository: https://huggingface.co/AofaYu71/LatentSkill
 ## Contents
 
 ```text
-data/
-  skill_pretrain/
-    train.jsonl
-    val.jsonl
-  skill_ift/
-    train.json
-  search_test/
-    search_test_all.jsonl
+skill_pretrain/
+  train.jsonl
+  val.jsonl
+skill_ift/
+  train.json
+search_test/
+  2wikimultihopqa_test.jsonl
+  bamboogle_test.jsonl
+  comparison_214.jsonl
+  hotpotqa_test.jsonl
+  musique_test.jsonl
+  nq_test.jsonl
+  popqa_test.jsonl
+  search_test_all.jsonl
+  triviaqa_test.jsonl
 ```
 
 The repository contains:
 
-- `data/skill_pretrain/`: skill-document pretraining data.
-- `data/skill_ift/`: trajectory-supervised fine-tuning data.
-- `data/search_test/`: SearchQA evaluation data released with this project.
+- `skill_pretrain/`: skill-document pretraining data.
+- `skill_ift/`: trajectory-supervised fine-tuning data.
+- `search_test/`: SearchQA evaluation data released with this project.
+
+## Splits
+
+| Split group | Files |
+|---|---|
+| Skill pretraining | `skill_pretrain/train.jsonl`, `skill_pretrain/val.jsonl` |
+| Skill fine-tuning | `skill_ift/train.json` |
+| SearchQA aggregate test | `search_test/search_test_all.jsonl` |
+| SearchQA source tests | `search_test/2wikimultihopqa_test.jsonl`, `search_test/bamboogle_test.jsonl`, `search_test/comparison_214.jsonl`, `search_test/hotpotqa_test.jsonl`, `search_test/musique_test.jsonl`, `search_test/nq_test.jsonl`, `search_test/popqa_test.jsonl`, `search_test/triviaqa_test.jsonl` |
 
 Model checkpoints are not stored in this dataset repository. Please use the LatentSkill model repository for checkpoints.
 
@@ -49,11 +65,19 @@ From the root of the code repository:
 ```bash
 hf download AofaYu71/LatentSkill \
   --repo-type dataset \
-  --local-dir . \
-  --include "data/skill_pretrain/train.jsonl" \
-            "data/skill_pretrain/val.jsonl" \
-            "data/skill_ift/train.json" \
-            "data/search_test/search_test_all.jsonl"
+  --local-dir data \
+  --include "skill_pretrain/train.jsonl" \
+            "skill_pretrain/val.jsonl" \
+            "skill_ift/train.json" \
+            "search_test/2wikimultihopqa_test.jsonl" \
+            "search_test/bamboogle_test.jsonl" \
+            "search_test/comparison_214.jsonl" \
+            "search_test/hotpotqa_test.jsonl" \
+            "search_test/musique_test.jsonl" \
+            "search_test/nq_test.jsonl" \
+            "search_test/popqa_test.jsonl" \
+            "search_test/search_test_all.jsonl" \
+            "search_test/triviaqa_test.jsonl"
 ```
 
 ## Usage
@@ -64,7 +88,15 @@ The downloaded files should match the following paths in the code repository:
 data/skill_pretrain/train.jsonl
 data/skill_pretrain/val.jsonl
 data/skill_ift/train.json
+data/search_test/2wikimultihopqa_test.jsonl
+data/search_test/bamboogle_test.jsonl
+data/search_test/comparison_214.jsonl
+data/search_test/hotpotqa_test.jsonl
+data/search_test/musique_test.jsonl
+data/search_test/nq_test.jsonl
+data/search_test/popqa_test.jsonl
 data/search_test/search_test_all.jsonl
+data/search_test/triviaqa_test.jsonl
 ```
 
 See the GitHub repository for training and evaluation commands.
