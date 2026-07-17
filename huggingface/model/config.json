@@ -1,0 +1,18 @@
+{
+  "name": "LatentSkill",
+  "repo_type": "model",
+  "base_model": "Qwen/Qwen3-8B",
+  "checkpoint_format": "tar.gz",
+  "loader": "https://github.com/yuaofan0-oss/LatentSkill",
+  "download_tracking": "This top-level config.json is intentionally included as the Hugging Face model download-statistics query file. It is metadata for the checkpoint bundle, not a standalone Transformers runtime configuration.",
+  "artifacts": {
+    "pretrain": {
+      "path": "latentskill_pretrain_qwen3_8b/pretrain.tar.gz",
+      "local_extract_dir": "checkpoints/latentskill_pretrain_qwen3_8b/pretrain/"
+    },
+    "sft": {
+      "path": "latentskill_sft_qwen3_8b/train.tar.gz",
+      "local_extract_dir": "checkpoints/latentskill_sft_qwen3_8b/train/"
+    }
+  }
+}

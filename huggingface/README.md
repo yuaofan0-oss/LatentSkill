@@ -26,6 +26,11 @@ hf upload AofaYu71/LatentSkill data/search_test search_test \
 hf repos create AofaYu71/LatentSkill --repo-type model --public --exist-ok
 
 hf upload AofaYu71/LatentSkill \
+  huggingface/model/config.json config.json \
+  --repo-type model \
+  --commit-message "Add download tracking config"
+
+hf upload AofaYu71/LatentSkill \
   checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz \
   latentskill_pretrain_qwen3_8b/pretrain.tar.gz \
   --repo-type model \

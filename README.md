@@ -104,7 +104,8 @@ Download the released LatentSkill checkpoints:
 hf download AofaYu71/LatentSkill \
   --repo-type model \
   --local-dir checkpoints \
-  --include "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
+  --include "config.json" \
+            "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
             "latentskill_sft_qwen3_8b/train.tar.gz"
 ```
 

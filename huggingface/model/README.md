@@ -27,6 +27,7 @@ Dataset repository: https://huggingface.co/datasets/AofaYu71/LatentSkill
 ## Contents
 
 ```text
+config.json
 latentskill_pretrain_qwen3_8b/
   pretrain.tar.gz
 latentskill_sft_qwen3_8b/
@@ -48,7 +49,8 @@ From the root of the code repository:
 hf download AofaYu71/LatentSkill \
   --repo-type model \
   --local-dir checkpoints \
-  --include "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
+  --include "config.json" \
+            "latentskill_pretrain_qwen3_8b/pretrain.tar.gz" \
             "latentskill_sft_qwen3_8b/train.tar.gz"
 
 tar -xzf checkpoints/latentskill_pretrain_qwen3_8b/pretrain.tar.gz \
@@ -63,6 +65,10 @@ tar -xzf checkpoints/latentskill_sft_qwen3_8b/train.tar.gz \
 These checkpoints are intended for reproducing the LatentSkill training and evaluation pipeline described in the paper. They are used with the LatentSkill codebase and the Qwen3-8B backbone.
 
 The checkpoints are not standalone conversational models. Please load them through the project code and follow the paths documented in the GitHub README.
+
+## Download Statistics
+
+The repository includes a top-level `config.json` metadata file so Hugging Face can count model downloads through the model download-statistics query file. The file is included in the download command above and is not used as a standalone Transformers runtime configuration.
 
 ## Citation
 
