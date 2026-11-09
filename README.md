@@ -5,7 +5,7 @@
   <a href="https://github.com/yuaofan0-oss/LatentSkill"><img src="https://img.shields.io/badge/Code-GitHub-blue" alt="Code"></a>
   <a href="https://huggingface.co/datasets/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Data-HuggingFace-yellow" alt="Data"></a>
   <a href="https://huggingface.co/AofaYu71/LatentSkill"><img src="https://img.shields.io/badge/Checkpoints-HuggingFace-yellow" alt="Checkpoints"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-green" alt="Apache License 2.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License"></a>
 </p>
 
 This is the official repository for **LatentSkill**, a method that converts reusable textual agent skills into plug-and-play LoRA adapters through a hypernetwork-based skill compiler. Instead of injecting skill text into every prompt, LatentSkill stores skill knowledge in weight space, reducing prompt overhead while keeping skills modular, scalable, and composable.
@@ -262,7 +262,9 @@ This project’s hypernetwork implementation is based on SHINE: [https://github.
 
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+LatentSkill's original code is licensed under the [MIT License](LICENSE), except where individual files indicate otherwise.
+
+Third-party code and adaptations, including files derived from SHINE, retain their original Apache-2.0 license and attribution notices. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the affected files and the bundled license text.
 
 ## Citation
 
