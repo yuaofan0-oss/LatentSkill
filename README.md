@@ -262,9 +262,11 @@ This project’s hypernetwork implementation is based on SHINE: [https://github.
 
 ## License
 
-LatentSkill's original code is licensed under the [MIT License](LICENSE), except where individual files indicate otherwise.
+LatentSkill as a whole, including its original code and LatentSkill-authored modifications to third-party code, is licensed under the [MIT License](LICENSE), subject to the third-party terms below.
 
-Third-party code and adaptations, including files derived from SHINE, retain their original Apache-2.0 license and attribution notices. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the affected files and the bundled license text.
+Third-party portions, including code originating from SHINE, remain subject to their original Apache-2.0 terms. Their copyright, attribution, license, and modification notices are preserved, and the [Apache-2.0 license text](third_party/licenses/Apache-2.0.txt) is bundled with this repository. The MIT license does not replace these upstream terms.
+
+Files containing both LatentSkill modifications and Apache-2.0 third-party code use `SPDX-License-Identifier: MIT AND Apache-2.0`, with comments explaining which license applies to each portion. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details and attribution.
 
 ## Citation
 

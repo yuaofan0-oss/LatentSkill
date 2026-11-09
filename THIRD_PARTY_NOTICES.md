@@ -1,18 +1,31 @@
 # Third-party notices
 
-LatentSkill's original code is licensed under the [MIT License](LICENSE), except
-where individual files indicate otherwise. The third-party code and adaptations
-listed below remain licensed under the Apache License, Version 2.0. Their
-copyright, attribution, license, and modification notices are retained in the
-source files. A copy of the Apache-2.0 license is included in
+LatentSkill as a whole, including its original code and LatentSkill-authored
+modifications to third-party code, is licensed under the [MIT License](LICENSE),
+subject to the applicable third-party terms described here.
+
+The third-party portions of the files listed below remain subject to the Apache
+License, Version 2.0. The MIT license for LatentSkill and its modifications does
+not replace or remove those upstream terms. Copyright, attribution, license, and
+modification notices are retained in the source files. A copy of the Apache-2.0
+license is included in
 [third_party/licenses/Apache-2.0.txt](third_party/licenses/Apache-2.0.txt).
+
+Files containing both kinds of contributions use
+`SPDX-License-Identifier: MIT AND Apache-2.0`. MIT applies to the LatentSkill-authored
+portions and modifications; Apache-2.0 applies to the upstream third-party
+portions. Distribution of a combined file must comply with both licenses for
+their respective portions. This is not an offer to choose either license for
+the entire file. LatentSkill modifications are Copyright (c) 2026 Aofan Yu.
 
 ## SHINE
 
 The following files are based on and adapted from
 [SHINE](https://github.com/MuLabPKU/SHINE), which is licensed under
 [Apache-2.0](https://github.com/MuLabPKU/SHINE/blob/main/LICENSE).
-Their headers record modifications by the LatentSkill authors in 2026.
+Their headers record modifications by the LatentSkill authors in 2026. Those
+LatentSkill modifications are licensed under MIT; the SHINE-derived upstream
+portions retain their Apache-2.0 terms.
 
 - `configs/models/qwen3_8b.yaml`
 - `latentskill/data/datasets.py`

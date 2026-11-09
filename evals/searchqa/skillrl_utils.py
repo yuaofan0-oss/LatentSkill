@@ -1,3 +1,11 @@
+# SPDX-License-Identifier: MIT AND Apache-2.0
+# LatentSkill modifications: Copyright (c) 2026 Aofan Yu
+# LatentSkill modifications are licensed under MIT (see LICENSE).
+# Third-party portions remain licensed under Apache-2.0; see
+# third_party/licenses/Apache-2.0.txt and THIRD_PARTY_NOTICES.md.
+# Modified by the LatentSkill authors in 2026.
+#
+# Upstream Apache-2.0 notice (applies to third-party portions):
 # Copyright 2024 Bytedance Ltd. and/or its affiliates
 # Copyright 2023-2024 SGLang Team
 # Copyright 2025 Search-R1 Contributors
